@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.react-grid-item.react-grid-placeholder {
+    background-color: rgba(247, 0, 41, 0.541);
+    border-radius: 20px;
+    transition: background-color 0.3s ease-in-out;
+    /* Add a transition for the background color */
+}
+
+.react-grid-item.react-grid-placeholder.react-dragging {
+    background-color: rgba(247, 0, 41, 0.8);
+    /* Change the background color when dragging */
+}
+
+.only-y-scrollbar-enable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100%
+}
+
+/* styles.css */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* margin: 0 2px; */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e0e0;
+    border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cecdcd;
+}
