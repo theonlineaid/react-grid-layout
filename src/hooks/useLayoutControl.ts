@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Layout } from 'react-grid-layout';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { RootState } from '../redux/store';
 
 const useLayoutControl = () => {
   const [customLayout, setCustomLayout] = useState<Layout[]>([]);
   const [isEditingEnabled, setIsEditingEnabled] = useState(false);
+  // const dispatch = useDispatch();
+  // const { customLayout, isEditingEnabled } = useSelector((state: RootState) => state.layout);
+
 
   // Retrieve layout from localStorage when component mounts
   const savedLayout = localStorage.getItem('layout');
