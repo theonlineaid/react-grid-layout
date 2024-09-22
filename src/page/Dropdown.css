@@ -1,0 +1,80 @@
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+    margin: 100px auto;
+  }
+  
+  /* Dropdown header */
+  .dropdown-header {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect on the header */
+  .dropdown-header:hover {
+    background-color: #f7f7f7;
+  }
+  
+  /* Dropdown list with bounce animation */
+  .dropdown-list {
+    position: absolute;
+    top: 100%; /* Adjust position to show below the header */
+    left: 0;
+    width: 250px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: dropdown-bounce 0.5s forwards ease-in-out;
+  }
+  
+  /* Bounce animation for dropdown */
+  @keyframes dropdown-bounce {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(10px);
+    }
+    75% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Dropdown list item */
+  .dropdown-list-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-list-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Selected item style */
+  .dropdown-list-item.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .dropdown-list-item.selected:hover {
+    background-color: #0056b3;
+  }
+  
