@@ -17,7 +17,7 @@ const useLayoutControl = () => {
   const initialLayout: Layout[] = savedLayout
     ? JSON.parse(savedLayout)
     : [
-        { i: 'a', x: 0, y: 0, w: 4, h: 4 },
+        { i: 'a', x: 0, y: 0, w: 4, h: 4, minH: 4, },
         { i: 'b', x: 2, y: 0, w: 2, h: 2 },
         { i: 'c', x: 4, y: 0, w: 2, h: 2 },
         { i: 'd', x: 0, y: 0, w: 2, h: 2 },

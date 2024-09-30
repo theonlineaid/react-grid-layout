@@ -38,7 +38,7 @@ function LayoutComponent() {
           layouts={{ lg: initialLayout }}
           breakpoints={breakpoints}
           cols={cols}
-          rowHeight={100}
+          rowHeight={100}   // to controll the layout height
           onLayoutChange={handleLayoutChange}
           isResizable={isEditingEnabled}
           isDraggable={isEditingEnabled}
