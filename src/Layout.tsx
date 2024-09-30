@@ -1,9 +1,13 @@
 import { Responsive, WidthProvider } from "react-grid-layout";
-import SampleData from "./component/SampleData";
+import { lazy, Suspense } from "react";
+// import SampleData from "./component/SampleData";
 import Data from "./component/Data";
 import Header from "./component/Header";
 import useLayoutControl from "./hooks/useLayoutControl";
 import { Container } from "@mui/material";
+// import { AgGridMarketData } from "./ag/AgGridMarketData";
+
+const AgGridMarketData =  lazy(() => import('./ag/AgGridMarketData'))
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -41,9 +45,11 @@ function LayoutComponent() {
         >
           <div
             key="a"
-            className="bg-blue-500 p-1 custom-scrollbar only-y-scrollbar-enable"
+            className="bg-pink-200 p-1 custom-scrollbar only-y-scrollbar-enable"
           >
-            <SampleData />
+            <Suspense fallback={<>Loading ....</>}>
+              <AgGridMarketData />
+            </Suspense>
           </div>
           <div key="b" className="bg-green-500">
             B
