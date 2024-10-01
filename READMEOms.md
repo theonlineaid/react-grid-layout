@@ -27,12 +27,12 @@ OMS-V2/
 │   │   ├── fonts/
 │   │   └── styles/
 │   ├── components/
-│   │   ├── Button.tsx
-│   │   └── Navbar.tsx
+│   │   └── navbar/
+│   │       └── Navbar.tsx
 │   ├── constants/
 │   │   └── colors.ts
 │   ├── context/
-│   │   └── AuthContext.tsx
+│   │   └── authContext.tsx
 │   ├── features/
 │   │   ├── api/
 │   │   │   └── apiSlice.ts
@@ -47,10 +47,11 @@ OMS-V2/
 │   ├── router/
 │   │   └── AppRouter.tsx
 │   ├── types/
-│   │   ├── AuthResponse.ts
-│   │   └── User.ts
+│   │   ├── authResponse.ts
+│   │   └── user.ts
 │   ├── ui/
-│   │   └── theme.ts
+│   │   └── button/
+│   │       └── Button.tsx
 │   ├── utils/
 │   │   ├── formatDate.ts
 │   │   └── calculateTax.ts
@@ -210,3 +211,93 @@ OMS-V2/
 ---
 
 By following this structure, Our project will be organized, scalable, and maintainable, allowing for a clean separation of concerns and making it easier for our team to collaborate.
+
+
+Here’s the updated version of the write-up with the inclusion of the **date** element for Git commits and branch naming conventions:
+
+---
+
+### Project Summary
+
+#### Git Commit Conventions
+
+When committing to the project, follow the commit message structure for consistency and clarity. This helps in tracking changes effectively and makes collaboration easier.
+
+##### Commit Message Format:
+```
+<type>(<dir>)[sub-folder/file]: <short commit message> - <YYYY/MM/DD>
+```
+
+- **type**: Describes the kind of change being made (e.g., `feat`, `fix`, `refactor`).
+- **dir**: The directory where the change was made (e.g., `components`, `utils`).
+- **sub-folder/file**: Specific sub-folder or file involved in the change (optional).
+- **date**: The date the commit was made in `YYYY/MM/DD` format.
+
+#### Common Commit Types:
+
+1. **feat**: For adding new features.
+   - Example: `feat(components)[Button]: add primary button variant - 2024/10/01`
+
+2. **refactor**: For updating or improving existing code without adding new features.
+   - Example: `refactor(services)[auth]: simplify login logic - 2024/10/01`
+
+3. **chore**: For tasks that involve maintenance or non-functional updates.
+   - Example: `chore(config): update ESLint rules - 2024/10/01`
+
+4. **style**: For adding or updating styles (e.g., CSS changes).
+   - Example: `style(ui)[Navbar]: update mobile responsiveness - 2024/10/01`
+
+5. **fix**: For bug fixes or problem resolution.
+   - Example: `fix(features)[auth]: correct token validation logic - 2024/10/01`
+
+---
+
+#### Branch Naming Conventions
+
+To enhance clarity and traceability, include the creation date in the branch name using the `YYYY/MM/DD` format.
+
+##### Branch Name Format:
+```
+<type>/<issue-id>-<feature-or-task-name>/YYYY/MM/DD
+```
+
+- **type**: The type of branch being created (e.g., `feature`, `bugfix`, `hotfix`).
+- **issue-id**: Reference to the Jira issue ID or GitHub issue number.
+- **feature-or-task-name**: A brief description of the task or feature.
+- **date**: The branch creation date in `YYYY/MM/DD` format.
+
+##### Example Branch Names:
+
+1. **Feature Branch**:  
+   For new feature implementation.
+   ```
+   feature/PROJ-1234-add-login-flow/2024/10/01
+   ```
+
+2. **Bug Fix Branch**:  
+   For fixing a bug.
+   ```
+   bugfix/PROJ-5678-fix-login-error/2024/10/01
+   ```
+
+3. **Hotfix Branch**:  
+   For critical hotfixes.
+   ```
+   hotfix/PROJ-9101-patch-crash-issue/2024/10/01
+   ```
+
+4. **Chore Branch**:  
+   For non-functional updates or maintenance.
+   ```
+   chore/update-eslint-config/2024/10/01
+   ```
+
+---
+
+#### Issue Management
+
+We manage all new features and bugs using **Jira Issues** integrated into GitHub. For each change, reference the corresponding Jira issue to keep track of progress and ensure proper communication across the team.
+
+---
+
+This ensures that both commit messages and branch names are clear, informative, and traceable by date, making collaboration more efficient!
