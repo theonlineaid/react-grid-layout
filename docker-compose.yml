@@ -1,0 +1,15 @@
+services:
+  react-app-dev:
+    build:
+      context: .
+      # target: development
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4000:3000"
+    volumes:
+      - ./src:/app/src  # live relode without any dely
+      - ./public:/app/public
+      - ./package.json:/app/package.json
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
