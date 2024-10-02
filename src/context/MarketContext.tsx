@@ -105,7 +105,7 @@ export const MarketProvider = ({ children }: MarketProviderProps) => {
             console.error("WebSocket error:", error);
         };
 
-        ws.onclose = (event) => {
+        ws.onclose = () => {
             console.log("WebSocket connection closed");
         };
 

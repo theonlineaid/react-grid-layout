@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Marquee from "react-fast-marquee";
 
 const financialData = [

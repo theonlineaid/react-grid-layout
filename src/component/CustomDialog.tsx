@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useEffect } from "react";
+import React, { useCallback, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -50,7 +50,7 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
   onClose,
   onFullScreenChange,
   fullScreen = false, // Default fullscreen state
-  shouldOpenTop = false,
+  // shouldOpenTop = false,
 }) => {
   const [isFullScreen, setIsFullScreen] = React.useState(fullScreen);
 
