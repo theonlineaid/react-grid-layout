@@ -1,9 +1,8 @@
 import { AgGridReact } from "ag-grid-react";
 import { ColDef } from "ag-grid-community";
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { Button } from "@mui/material";
 
-const AgGridTable = () => {
+const TableListSetting = () => {
   // Define the row data (your data)
   const rowData = [
     { SL: 1, Name: "Trading List", Action: "", Existing: 1 },
@@ -26,12 +25,14 @@ const AgGridTable = () => {
       headerName: "Action",
       field: "Action",
       cellRenderer: (params: any) => (
-        <button
+        <Button
+          variant="contained"
+          size="small"
+          sx={{ mb: 0.5 }}
           onClick={() => alert(`Action triggered for ${params.data.Name}`)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
         >
           Action
-        </button>
+        </Button>
       ),
     },
     { headerName: "Existing", field: "Existing", sortable: true, filter: true },
@@ -42,11 +43,11 @@ const AgGridTable = () => {
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
-        pagination={true}
-        paginationPageSize={10}
+        // pagination={false}
+        // paginationPageSize={0}
       />
     </div>
   );
 };
 
-export default AgGridTable;
+export default TableListSetting;
