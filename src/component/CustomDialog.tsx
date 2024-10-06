@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useEffect, useState, forwardRef } from "react";
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -19,9 +19,8 @@ interface CustomDialogProps {
   children: React.ReactNode;
   open: boolean;
   onClose: () => void;
-  onFullScreenChange?: (isFullScreen: boolean) => void;
-  fullScreen?: boolean;
-  shouldOpenTop?: boolean;
+  onFullScreenChange?: (isFullScreen: boolean) => void; // Notify parent on full-screen changes
+  fullScreen?: boolean; // Full-screen prop from parent
 }
 
 const PaperComponent: React.FC = (props) => (
@@ -33,7 +32,7 @@ const PaperComponent: React.FC = (props) => (
   </Draggable>
 );
 
-const Transition = React.forwardRef(function Transition(
+const Transition = forwardRef(function Transition(
   props: TransitionProps & { children: React.ReactElement<any, any> },
   ref: React.Ref<unknown>
 ) {
@@ -49,23 +48,23 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
   open,
   onClose,
   onFullScreenChange,
-  fullScreen = false, // Default fullscreen state
-  // shouldOpenTop = false,
+  fullScreen = false, // Default fullscreen from the parent
 }) => {
-  const [isFullScreen, setIsFullScreen] = React.useState(fullScreen);
+  const [isFullScreen, setIsFullScreen] = useState(fullScreen);
 
-  // Reset fullscreen state to false when dialog closes
-  // useEffect(() => {
-  //   if (!open) {
-  //     setIsFullScreen(false); // Reset fullscreen when dialog closes
-  //   }
-  // }, [open]);
+  // Sync fullscreen prop from parent when the dialog opens
+  useEffect(() => {
+    setIsFullScreen(fullScreen);
 
+    console.log(isFullScreen)
+  }, [fullScreen]);
+
+  // Handle fullscreen toggle
   const handleFullscreen = useCallback(() => {
     setIsFullScreen((prev) => {
       const newFullScreenState = !prev;
       if (onFullScreenChange) {
-        onFullScreenChange(newFullScreenState);
+        onFullScreenChange(newFullScreenState); // Notify parent of full-screen state change
       }
       return newFullScreenState;
     });
@@ -81,16 +80,15 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
 
   return (
     <Dialog
-      fullScreen={isFullScreen} // Switch to fullscreen if the state is true
+      fullScreen={isFullScreen} // Toggle full-screen mode
       fullWidth
       maxWidth={isFullScreen ? undefined : maxWidth} // Ignore maxWidth when fullscreen
       open={open}
       onClose={onClose}
-      PaperComponent={isDraggable && !isFullScreen ? PaperComponent : undefined}
+      PaperComponent={isDraggable && !isFullScreen ? PaperComponent : undefined} // Allow dragging only when not in full-screen mode
       TransitionComponent={Transition}
       disableEscapeKeyDown
       aria-labelledby="draggable-dialog-title"
-      // PaperProps={{ sx: { mb: "50px", verticalAlign: "top" } }}
     >
       <Box p={1}>
         <Box
@@ -119,13 +117,7 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
             </IconButton>
           </Box>
         </Box>
-        <DialogContent
-          sx={{
-            p: 0,
-          }}
-        >
-          {children}
-        </DialogContent>
+        <DialogContent sx={{ p: 0 }}>{children}</DialogContent>
       </Box>
     </Dialog>
   );

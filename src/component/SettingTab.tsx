@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Tabs, Tab, Box } from "@mui/material";
 import TableListSetting from "../ag/TableListSetting";
 
@@ -32,7 +31,8 @@ function a11yProps(index: number) {
   };
 }
 
-export default function SettingTab({}) {
+// Update to accept fullScreen prop
+export default function SettingTab({ fullScreen }: { fullScreen: boolean }) {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -55,7 +55,7 @@ export default function SettingTab({}) {
 
       {/* Tab Content */}
       <TabPanel value={tabIndex} index={0}>
-        <TableListSetting />
+        <TableListSetting isFullScreen={fullScreen} />
       </TabPanel>
       <TabPanel value={tabIndex} index={1}>
         <p>Appearance Settings content goes here...</p>

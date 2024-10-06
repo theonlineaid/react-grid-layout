@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import MarqueeControl from "./MarqueeControl";
-import { Switch, IconButton, Tabs, Tab, Box } from "@mui/material";
+import { Switch, IconButton, Box } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
-import CustomDialog from "./CustomDialog"; // Assuming CustomDialog is imported
+import CustomDialog from "./CustomDialog";
 import SettingTab from "./SettingTab";
 
 type Props = {
@@ -19,9 +19,14 @@ const Header: React.FC<Props> = ({
   isEditingEnabled,
 }) => {
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   const handleOpenDialog = () => setOpenSettingsDialog(true);
   const handleCloseDialog = () => setOpenSettingsDialog(false);
+
+  const handleFullScreenChange = (isFullScreen: boolean) => {
+    setIsFullScreen(isFullScreen);
+  };
 
   return (
     <>
@@ -57,16 +62,17 @@ const Header: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* Custom Dialog with Tabs */}
+      {/* Custom Dialog */}
       <CustomDialog
-        maxWidth="md"
         title="Settings"
         open={openSettingsDialog}
         onClose={handleCloseDialog}
         isDraggable
         isFullScreenButtonVisible
+        fullScreen={isFullScreen}
+        onFullScreenChange={handleFullScreenChange}
       >
-        <SettingTab />
+        <SettingTab fullScreen={isFullScreen} />
       </CustomDialog>
     </>
   );

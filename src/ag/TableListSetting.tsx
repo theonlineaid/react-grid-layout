@@ -2,7 +2,7 @@ import { AgGridReact } from "ag-grid-react";
 import { ColDef } from "ag-grid-community";
 import { Button } from "@mui/material";
 
-const TableListSetting = () => {
+const TableListSetting = ({isFullScreen}: any) => {
   // Define the row data (your data)
   const rowData = [
     { SL: 1, Name: "Trading List", Action: "", Existing: 1 },
@@ -38,8 +38,11 @@ const TableListSetting = () => {
     { headerName: "Existing", field: "Existing", sortable: true, filter: true },
   ];
 
+    // Adjust the height based on full-screen mode
+  const gridHeight = isFullScreen ? '85vh' : '400px';
+
   return (
-    <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
+    <div className="ag-theme-alpine" style={{ height: gridHeight, width: "100%" }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
