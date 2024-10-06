@@ -36,6 +36,7 @@ export default function SettingTab({ fullScreen }: { fullScreen: boolean }) {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    console.log(event)
     setTabIndex(newValue);
   };
 

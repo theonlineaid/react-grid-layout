@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MarqueeControl from "./MarqueeControl";
-import { Switch, IconButton, Box } from "@mui/material";
+import { Switch, IconButton } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CustomDialog from "./CustomDialog";
 import SettingTab from "./SettingTab";
@@ -30,7 +30,6 @@ const Header: React.FC<Props> = ({
 
   return (
     <>
-      <h1>lol</h1>
       <MarqueeControl />
       <div className="flex justify-between mb-4">
         <IconButton onClick={handleOpenDialog}>
