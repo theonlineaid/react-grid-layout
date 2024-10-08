@@ -1,11 +1,9 @@
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { lazy, Suspense } from "react";
-// import SampleData from "./component/SampleData";
 import Data from "./component/Data";
 import Header from "./component/Header";
 import useLayoutControl from "./hooks/useLayoutControl";
 import { Container } from "@mui/material";
-// import { AgGridMarketData } from "./ag/AgGridMarketData";
 
 const AgGridMarketData =  lazy(() => import('./ag/AgGridMarketData'))
 

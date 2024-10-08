@@ -46,8 +46,7 @@ const TableListSetting = ({isFullScreen}: any) => {
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
-        // pagination={false}
-        // paginationPageSize={0}
+  
       />
     </div>
   );

@@ -55,6 +55,8 @@ const AgGridMarketData = () => {
           rowSelection="single"
           allowShowChangeAfterFilter={true}
           onRowClicked={onRowClicked}
+          pagination={true}
+          paginationPageSize={50}
         />
       </div>
     </>
