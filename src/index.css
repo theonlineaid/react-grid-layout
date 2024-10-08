@@ -38,3 +38,18 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #cecdcd;
 }
+
+
+
+.splitter-layout > .layout-splitter {
+    flex: 0 0 auto;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+    background-color: #ccc;
+}
+
+.splitter-layout .layout-splitter:hover {
+    background-color: #63B3ED;
+    transition: 0.5s;
+}

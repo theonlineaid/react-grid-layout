@@ -1,13 +1,13 @@
-import { Responsive, WidthProvider } from "react-grid-layout";
 import { lazy, Suspense } from "react";
+import { Responsive, WidthProvider } from "react-grid-layout";
+const ResponsiveGridLayout = WidthProvider(Responsive);
 import Data from "./component/Data";
 import Header from "./component/Header";
 import useLayoutControl from "./hooks/useLayoutControl";
 import { Container } from "@mui/material";
-
+import RD from "./component/MarketDapth/RD";
 const AgGridMarketData =  lazy(() => import('./ag/AgGridMarketData'))
 
-const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function LayoutComponent() {
   const {
@@ -50,7 +50,7 @@ function LayoutComponent() {
             </Suspense>
           </div>
           <div key="b" className="bg-green-500">
-            B
+            <RD />
           </div>
           <div
             key="c"
@@ -69,5 +69,4 @@ function LayoutComponent() {
     </>
   );
 }
-
 export default LayoutComponent;

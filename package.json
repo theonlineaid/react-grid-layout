@@ -24,11 +24,13 @@
     "react-grid-layout": "^1.4.4",
     "react-redux": "^9.1.1",
     "react-router-dom": "^6.26.2",
+    "react-splitter-layout": "^4.0.0",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-splitter-layout": "^3.0.5",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
