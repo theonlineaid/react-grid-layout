@@ -16,6 +16,8 @@ import {
 } from "react-router-dom";
 import Test from "./page/Test.tsx";
 import { MarketProvider } from "./context/MarketContext.tsx";
+import PrivateRoute from "./route/PrivateRoute.tsx";
+import Login from "./page/Login.tsx";
 
 
 const router = createBrowserRouter([
@@ -23,9 +25,19 @@ const router = createBrowserRouter([
     path: "/",
     element: <Test />,
   },
+ 
+  {
+    path: "/login",
+    element: <Login />,
+  },
   {
     path: "/dashboard",
-    element: <App />,
+    element: <PrivateRoute element={<App />} /> ,
+  },
+
+  {
+    path: "*",
+    element: <div>404 not found</div> ,
   },
 ]);
 
