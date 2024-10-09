@@ -18,6 +18,7 @@ import Test from "./page/Test.tsx";
 import { MarketProvider } from "./context/MarketContext.tsx";
 import PrivateRoute from "./route/PrivateRoute.tsx";
 import Login from "./page/Login.tsx";
+import Report from "./page/Report.tsx";
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <PrivateRoute element={<App />} /> ,
+  },
+  {
+    path: "/report",
+    element: <Report /> ,
   },
 
   {

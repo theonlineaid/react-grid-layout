@@ -41,7 +41,7 @@
 
 
 
-.splitter-layout > .layout-splitter {
+.splitter-layout>.layout-splitter {
     flex: 0 0 auto;
     width: 4px;
     height: 100%;
@@ -53,3 +53,24 @@
     background-color: #63B3ED;
     transition: 0.5s;
 }
+
+
+
+.ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* .ReactModal__Content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  } */
