@@ -1,14 +1,18 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { useMarket } from "../context/MarketContext";
 import { columnDefs, defaultColDef, handleContextMenu } from "./chunk/external";
 import { useBoardFilter } from "./chunk/useBoardFilter";
+import CustomDialog from "../component/CustomDialog";
 
 const AgGridMarketData = () => {
+  // State for modal control
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRowData, setSelectedRowData] = useState<any>(null);
+
   const { marketData } = useMarket();
   const gridRef = useRef<AgGridReact>(null);
 
-  // Use the custom hook for filtering
   const {
     filteredData,
     availableBoards,
@@ -16,9 +20,27 @@ const AgGridMarketData = () => {
     setSelectedBoard,
   } = useBoardFilter(marketData);
 
+
   const onRowClicked = useCallback((event: any) => {
     console.log("Row Data: ", event.data);
   }, []);
+
+  // Handle double-click on cell
+  // const onCellDoubleClicked = ((event: any) => {
+  //   setSelectedRowData(event.data); // Set row data for the modal
+  //   setIsModalOpen(true); // Open the modal
+  // });
+
+  const onCellDoubleClicked = useCallback((event: any) => {
+    setSelectedRowData(event.data); // Set row data for the modal
+    setIsModalOpen(true); // Open the modal
+  }, [])
+
+  // Close modal handler
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedRowData(null);
+  };
 
   return (
     <>
@@ -57,9 +79,30 @@ const AgGridMarketData = () => {
           onRowClicked={onRowClicked}
           pagination={true}
           paginationPageSize={50}
+          onCellDoubleClicked={onCellDoubleClicked}
         />
       </div>
+
+      {/* Custom Dialog for displaying row data */}
+      {isModalOpen && (
+        <CustomDialog
+          title="Row Details"
+          open={isModalOpen}
+          onClose={handleCloseModal}
+          isFullScreenButtonVisible
+          maxWidth="sm"
+          isDraggable
+        >
+          <div>
+            {/* Render row data here */}
+            {selectedRowData && (
+              <pre>{JSON.stringify(selectedRowData, null, 2)}</pre>
+            )}
+          </div>
+        </CustomDialog>
+      )}
     </>
   );
 };
+
 export default AgGridMarketData;
